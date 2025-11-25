@@ -105,8 +105,6 @@ air-quality-data-2015-2024/
 ### Station-Level Performance Reports
 ![Station Stats](visuals/station_stats.png)
 
-*Replace the above placeholders with your actual screenshots in the `visuals/` folder.*
-
 ---
 
 ## Key Insights
