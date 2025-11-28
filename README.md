@@ -96,6 +96,17 @@ air-quality-data-2015-2024/
 ### Stations per City
 ![Station Stats](visuals/station_stats.png)
 
+### Additional Charts
+- ![City Hour PM2.5 Trend](visuals/city_hour_cleaned_pm25_trend.png)
+- ![Station Day PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
+- ![Station Hour PM2.5 Trend](visuals/station_hour_cleaned_pm25_trend.png)
+- ![Seasonal CO](visuals/seasonal_co.png)
+- ![Seasonal NO](visuals/seasonal_no.png)
+- ![Seasonal NO2](visuals/seasonal_no2.png)
+- ![Seasonal O3](visuals/seasonal_o3.png)
+- ![Seasonal PM10](visuals/seasonal_pm10.png)
+- ![Seasonal SO2](visuals/seasonal_so2.png)
+
 ---
 
 ## Key Insights
@@ -133,13 +144,26 @@ python scripts/clean_data.py
 ### 4️⃣ Run Analysis & Visualizations
 
 ```bash
-# Run the main analysis scripts
+# Run data cleaning
+python scripts/clean_data.py
+
+# Run analysis and generate visualizations
 python scripts/analyze_data.py
-python scripts/top_polluted_cities.py
-python scripts/seasonal_trends.py
-python scripts/city_pollution_over_years.py
+python scripts/analyze_data_enhanced.py
 python scripts/analyze_stations.py
+python scripts/city_pollution_over_years.py
 python scripts/pollution_hotspots.py
+python scripts/seasonal_trends.py
+python scripts/top_polluted_cities.py
+
+# Generate reports and dashboards
+python scripts/generate_report.py
+python scripts/interactive_visualizations.py
+python scripts/city_comparison_dashboard.py
+python scripts/missing_values_report.py
+
+# Run all scripts at once
+python scripts/run_all.py
 ```
 
 ## Contributing
