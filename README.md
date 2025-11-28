@@ -80,32 +80,64 @@ air-quality-data-2015-2024/
 ## Key Visualizations
 ### PM2.5 Trends
 ![PM2.5 Trend](visuals/pm25_trend.png)
+This chart illustrates the overall trends in PM2.5 pollution levels across Indian cities from 2015 to 2024, highlighting seasonal and yearly variations.
 
 ### Seasonal Pollutant Trends
 ![Pollutant Distribution](visuals/pollutant_distribution.png)
+This visualization shows the distribution and seasonal patterns of various pollutants, helping to identify peak pollution periods throughout the year.
 
 ### Top Polluted Cities
 ![Top Cities](visuals/top_cities.png)
+This bar chart ranks the top polluted cities in India based on average AQI levels, providing a clear comparison of pollution severity across major urban areas.
 
 ### Pollution Hotspots
 ![Pollution Hotspots](visuals/pollution_hotspots_clusters.png)
+This clustering analysis identifies pollution hotspots by grouping cities with similar pollution profiles, revealing geographical patterns in air quality.
 
 ### City Pollution Over Years
 ![Yearly Summary](visuals/yearly_summary.png)
+This chart displays the yearly summary of pollution levels for selected cities, showing trends and changes in air quality over the decade.
 
 ### Stations per City
 ![Station Stats](visuals/station_stats.png)
+This visualization presents the number of air quality monitoring stations available in each city, indicating the coverage and reliability of pollution data.
 
 ### Additional Charts
-- ![City Hour PM2.5 Trend](visuals/city_hour_cleaned_pm25_trend.png)
-- ![Station Day PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
-- ![Station Hour PM2.5 Trend](visuals/station_hour_cleaned_pm25_trend.png)
-- ![Seasonal CO](visuals/seasonal_co.png)
-- ![Seasonal NO](visuals/seasonal_no.png)
-- ![Seasonal NO2](visuals/seasonal_no2.png)
-- ![Seasonal O3](visuals/seasonal_o3.png)
-- ![Seasonal PM10](visuals/seasonal_pm10.png)
-- ![Seasonal SO2](visuals/seasonal_so2.png)
+### City Hour PM2.5 Trend
+![City Hour PM2.5 Trend](visuals/city_hour_cleaned_pm25_trend.png)
+This chart shows the PM2.5 pollution trends over time based on hourly city-level data, offering detailed insights into daily and hourly fluctuations.
+
+### Station Day PM2.5 Trend
+![Station Day PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
+This visualization depicts PM2.5 trends from daily station data, providing a granular view of pollution levels at specific monitoring locations.
+
+### Station Hour PM2.5 Trend
+![Station Hour PM2.5 Trend](visuals/station_hour_cleaned_pm25_trend.png)
+This chart illustrates hourly PM2.5 trends from station-level data, highlighting short-term variations in air quality at individual monitoring points.
+
+### Seasonal CO
+![Seasonal CO](visuals/seasonal_co.png)
+This chart shows the seasonal trends in Carbon Monoxide (CO) levels, revealing how CO concentrations vary across different seasons.
+
+### Seasonal NO
+![Seasonal NO](visuals/seasonal_no.png)
+This visualization displays seasonal patterns in Nitrogen Oxide (NO) levels, helping to understand seasonal impacts on this pollutant.
+
+### Seasonal NO2
+![Seasonal NO2](visuals/seasonal_no2.png)
+This chart illustrates the seasonal trends in Nitrogen Dioxide (NO2) concentrations, providing insights into seasonal variations in urban air pollution.
+
+### Seasonal O3
+![Seasonal O3](visuals/seasonal_o3.png)
+This visualization shows seasonal patterns in Ozone (O3) levels, highlighting periods of higher ozone concentration in the atmosphere.
+
+### Seasonal PM10
+![Seasonal PM10](visuals/seasonal_pm10.png)
+This chart depicts seasonal trends in PM10 particulate matter, offering a view of how larger particulate pollution fluctuates throughout the year.
+
+### Seasonal SO2
+![Seasonal SO2](visuals/seasonal_so2.png)
+This visualization displays seasonal variations in Sulfur Dioxide (SO2) levels, aiding in understanding seasonal influences on this industrial pollutant.
 
 ---
 
