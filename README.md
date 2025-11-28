@@ -133,15 +133,13 @@ python scripts/clean_data.py
 ### 4️⃣ Run Analysis & Visualizations
 
 ```bash
-# Run all analysis scripts
+# Run the main analysis scripts
 python scripts/analyze_data.py
-python scripts/report_top_cities.py
-python scripts/yearly_summary.py
-python scripts/pollutant_distribution.py
-python scripts/city_trend_analysis.py
-python scripts/correlation_matrix.py
-python scripts/station_stats.py
-python scripts/combined_dashboard.py
+python scripts/top_polluted_cities.py
+python scripts/seasonal_trends.py
+python scripts/city_pollution_over_years.py
+python scripts/analyze_stations.py
+python scripts/pollution_hotspots.py
 ```
 
 ## Contributing
