@@ -221,7 +221,8 @@ python scripts/seasonal_trends.py
 python scripts/top_polluted_cities.py
 
 # Generate reports and dashboards
-python scripts/generate_report.py
+# Generate a lightweight summary report (markdown)
+python scripts/generate_summary.py
 python scripts/interactive_visualizations.py
 python scripts/city_comparison_dashboard.py
 python scripts/missing_values_report.py
