@@ -21,16 +21,17 @@ def create_interactive_pm25_trend(filename):
     df['Datetime'] = pd.to_datetime(df['Datetime'])
     df = df.dropna(subset=['PM2.5'])
 
-    # Group by date and city if available
+    # Resample to daily averages for better visibility
+    df = df.set_index('Datetime')
     if "City" in df.columns:
-        daily_pm25 = df.groupby(['Datetime', 'City'])['PM2.5'].mean().reset_index()
+        daily_pm25 = df.groupby('City')['PM2.5'].resample('D').mean().reset_index()
         fig = px.line(daily_pm25, x='Datetime', y='PM2.5', color='City',
-                      title=f'Interactive PM2.5 Trends by City ({filename})',
+                      title=f'Interactive Daily PM2.5 Trends by City ({filename})',
                       color_discrete_sequence=px.colors.qualitative.Set1)
     else:
-        daily_pm25 = df.groupby('Datetime')['PM2.5'].mean().reset_index()
+        daily_pm25 = df['PM2.5'].resample('D').mean().reset_index()
         fig = px.line(daily_pm25, x='Datetime', y='PM2.5',
-                      title=f'Interactive PM2.5 Trend ({filename})')
+                      title=f'Interactive Daily PM2.5 Trend ({filename})')
 
     fig.update_layout(xaxis_title='Date', yaxis_title='PM2.5')
     out_path = VIS_PATH + filename.replace(".csv", "_pm25_trend_interactive.html")
