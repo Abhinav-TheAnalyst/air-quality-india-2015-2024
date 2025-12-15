@@ -43,7 +43,7 @@ def main():
 
     plot_df = city_year[city_year["City"].isin(top_cities)]
     plt.figure(figsize=(12,6))
-    sns.lineplot(data=plot_df, x="year", y=metric, hue="City", marker="o", palette="tab10")
+    sns.lineplot(data=plot_df, x="year", y=metric, hue="City", marker="o", palette="bright")
     plt.title(f"{metric} trend over years — Top {len(top_cities)} cities", fontsize=16, fontweight='bold')
     plt.xlabel("Year", fontsize=14)
     plt.ylabel(metric, fontsize=14)

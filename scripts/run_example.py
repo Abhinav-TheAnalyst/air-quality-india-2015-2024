@@ -74,7 +74,7 @@ def main():
             return
         sub = sub.sort_values(date_col)
         plt.figure(figsize=(10, 4))
-        plt.plot(sub[date_col], sub[pm_col], marker=".", linewidth=0.7)
+        plt.plot(sub[date_col], sub[pm_col], marker="o", linewidth=0.7, color='crimson', markersize=2)
         plt.title(f"{pm_col} over time — {top_city}")
         plt.xlabel(date_col)
         plt.ylabel(pm_col)
@@ -85,7 +85,7 @@ def main():
     else:
         # If no city/date columns, show distribution
         plt.figure(figsize=(6, 4))
-        df[pm_col].dropna().hist(bins=40)
+        df[pm_col].dropna().hist(bins=40, color='skyblue', edgecolor='black')
         plt.title(f"Distribution of {pm_col}")
         plt.xlabel(pm_col)
         plt.tight_layout()

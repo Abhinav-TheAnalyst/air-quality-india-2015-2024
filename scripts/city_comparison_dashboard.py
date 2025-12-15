@@ -36,7 +36,8 @@ def main():
     # simple interactive figure
     fig = px.line(dash_df, x=date_col, y=metric, color="City",
                   title=f"{metric} over time — Top 6 cities",
-                  labels={date_col:"Date", metric:metric})
+                  labels={date_col:"Date", metric:metric},
+                  color_discrete_sequence=px.colors.qualitative.Set1)
     out_html = VISUALS + "city_comparison_dashboard.html"
     fig.write_html(out_html)
     print("Saved interactive dashboard:", out_html)

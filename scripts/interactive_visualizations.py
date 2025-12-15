@@ -25,7 +25,8 @@ def create_interactive_pm25_trend(filename):
     if "City" in df.columns:
         daily_pm25 = df.groupby(['Datetime', 'City'])['PM2.5'].mean().reset_index()
         fig = px.line(daily_pm25, x='Datetime', y='PM2.5', color='City',
-                      title=f'Interactive PM2.5 Trends by City ({filename})')
+                      title=f'Interactive PM2.5 Trends by City ({filename})',
+                      color_discrete_sequence=px.colors.qualitative.Set1)
     else:
         daily_pm25 = df.groupby('Datetime')['PM2.5'].mean().reset_index()
         fig = px.line(daily_pm25, x='Datetime', y='PM2.5',
@@ -48,7 +49,7 @@ def create_interactive_top_cities():
 
     fig = px.bar(top_cities, x='City', y='AQI',
                  title='Top 10 Most Polluted Cities (Average AQI)',
-                 color='AQI', color_continuous_scale='Reds')
+                 color='AQI', color_continuous_scale='Plasma')
     fig.update_layout(xaxis_title='City', yaxis_title='Average AQI')
 
     out_path = VIS_PATH + "top_polluted_cities_interactive.html"
