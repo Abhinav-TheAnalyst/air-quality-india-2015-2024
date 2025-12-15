@@ -213,8 +213,8 @@ Contributions are welcome!
 
 **Abhinav Verma** – Aspiring Data Analyst / Data Scientist
 
-* LinkedIn: [LinkedIn](https://www.linkedin.com/in/abhinav-verma-0077/)
-* GitHub: [abhinav0077](https://github.com/abhinav0077)
+* LinkedIn: [LinkedIn](https://www.linkedin.com/in/abhinav-theanalyst/)
+* GitHub: [abhinav0077](https://github.com/Abhinav-TheAnalyst)
 
 ---
 
