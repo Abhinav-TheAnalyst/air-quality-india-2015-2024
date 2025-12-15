@@ -80,15 +80,15 @@ air-quality-data-2015-2024/
 
 ## Key Visualizations
 ### PM2.5 Trends
-![PM2.5 Trend](visuals/pm25_trend.png)
+![PM2.5 Trend](visuals/run_example_pm25.png)
 Dive into the vibrant ebb and flow of PM2.5 pollution levels across Indian cities from 2015 to 2024. This striking line chart highlights seasonal spikes and yearly patterns, painting a clear picture of air quality evolution with bold, intuitive visuals.
 
 ### Seasonal Pollutant Trends
-![Pollutant Distribution](visuals/pollutant_distribution.png)
+![Seasonal PM2.5](visuals/seasonal_pm25.png)
 Uncover the dynamic distribution and seasonal rhythms of key pollutants in this colorful visualization. It vividly illustrates peak pollution periods, using engaging hues to make complex data patterns easy to grasp and remember.
 
 ### Top Polluted Cities
-![Top Cities](visuals/top_cities.png)
+![Top Polluted Cities](visuals/top_polluted_cities.png)
 Ranked in a bold bar chart, this visualization spotlights India's most polluted cities by average AQI. With eye-catching colors and sharp contrasts, it delivers a compelling comparison of urban air quality challenges at a glance.
 
 ### Pollution Hotspots
@@ -96,11 +96,11 @@ Ranked in a bold bar chart, this visualization spotlights India's most polluted 
 Explore pollution hotspots through this innovative clustering analysis. Cities with similar pollution profiles are grouped in a visually appealing scatter plot, revealing geographical patterns with vibrant clusters that highlight regional air quality stories.
 
 ### City Pollution Over Years
-![Yearly Summary](visuals/yearly_summary.png)
+![City Pollution Over Years](visuals/city_pollution_over_years_top6.png)
 Track the decade-long journey of pollution in selected cities with this elegant yearly summary chart. Featuring smooth lines and rich colors, it showcases trends and changes in air quality, making long-term insights both accessible and captivating.
 
 ### Stations per City
-![Station Stats](visuals/station_stats.png)
+![Stations per City](visuals/stations_per_city.png)
 This informative bar chart displays the number of monitoring stations per city, using a palette of fresh colors to emphasize data coverage and reliability. It's a quick, visually engaging way to assess the robustness of air quality monitoring across India.
 
 ### Additional Charts
@@ -139,6 +139,32 @@ Track the seasonal ebb and flow of PM10 particulate matter in this robust visual
 ### Seasonal SO2
 ![Seasonal SO2](visuals/seasonal_so2.png)
 This chart vividly displays Sulfur Dioxide (SO2) seasonal variations with industrial-inspired colors. It aids in understanding seasonal influences on this pollutant, using a design that's as informative as it is visually striking.
+
+### Pollutant Correlations
+![City Day Correlation](visuals/city_day_cleaned_correlation.png)
+Heatmap showing correlations between pollutants in daily city data, revealing relationships with a plasma color scale.
+
+![City Hour Correlation](visuals/city_hour_cleaned_correlation.png)
+Heatmap for hourly city data correlations.
+
+![Station Day Correlation](visuals/station_day_cleaned_correlation.png)
+Station-level daily correlations.
+
+![Station Hour Correlation](visuals/station_hour_cleaned_correlation.png)
+Station-level hourly correlations.
+
+### Interactive Visualizations
+[Interactive PM2.5 Trends](visuals/city_day_cleaned_pm25_trend_interactive.html)
+Interactive daily PM2.5 trends by city.
+
+[Interactive Top Polluted Cities](visuals/top_polluted_cities_interactive.html)
+Interactive bar chart of top polluted cities.
+
+[Interactive Seasonal PM2.5 Trends](visuals/seasonal_pm25_trends_interactive.html)
+Interactive seasonal trends.
+
+[Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
+Interactive correlation heatmap.
 
 ### City Comparison Dashboard
 [Interactive City Comparison Dashboard](visuals/city_comparison_dashboard.html)
