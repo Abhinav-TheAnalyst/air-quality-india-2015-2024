@@ -4,9 +4,11 @@ Analysis of air pollution data across Indian cities using Python, Pandas, NumPy,
 
 ## Features
 - Data cleaning and preprocessing
-- PM2.5 trend analysis by city
-- Seasonal pollution patterns
+- Monthly PM2.5 trend analysis by city
+- Seasonal pollution patterns with value labels
 - Pollutant correlation analysis
+- City comparison boxplots
+- Yearly average trends
 - Interactive visualizations
 
 ## Quick Start
@@ -22,7 +24,7 @@ python scripts/analyze_data_enhanced.py
 
 ## Visualizations
 
-### PM2.5 Trends
+### PM2.5 Monthly Trends
 ![PM2.5 Trends](visuals/pm25_trend.png)
 
 ### Seasonal Analysis
@@ -30,6 +32,12 @@ python scripts/analyze_data_enhanced.py
 
 ### Pollutant Correlations
 ![Correlations](visuals/pollution_correlation.png)
+
+### City Comparison
+![City Boxplot](visuals/city_pm25_boxplot.png)
+
+### Yearly Trends
+![Yearly Trends](visuals/yearly_pm25_trends.png)
 
 ## Data Source
 Kaggle: Air Quality Data in India (2015-2024)
