@@ -1,6 +1,13 @@
 # Air Quality Analysis: India 2015-2024
 
-A comprehensive data analysis project examining air pollution trends across major Indian cities from 2015 to 2024. This project demonstrates end-to-end data science workflow including data cleaning, exploratory analysis, and visualization.
+[![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-2.3.3-orange.svg)](https://pandas.pydata.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-2.3.5-lightblue.svg)](https://numpy.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.10.7-red.svg)](https://matplotlib.org/)
+[![Seaborn](https://img.shields.io/badge/Seaborn-0.13.2-blue.svg)](https://seaborn.pydata.org/)
+[![Plotly](https://img.shields.io/badge/Plotly-6.5.0-green.svg)](https://plotly.com/)
+
+A concise, human-written analysis of air pollution across Indian cities (2015–2024). This repo contains scripts to clean, analyze and visualize the dataset — designed to be clear for reviewers and recruiters.
 
 ## 📊 Project Overview
 
@@ -18,7 +25,7 @@ This repository contains an analysis of air quality data collected from various 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.14+
 - pip package manager
 
 ### Installation
