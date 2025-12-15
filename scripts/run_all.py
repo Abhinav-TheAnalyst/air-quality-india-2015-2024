@@ -13,7 +13,7 @@ scripts = [
     "top_polluted_cities.py",
     "missing_values_report.py",
     "interactive_visualizations.py",
-    "generate_report.py",
+    "generate_summary.py",
     "run_example.py"
 ]
 
