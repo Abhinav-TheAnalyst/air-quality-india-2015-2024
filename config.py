@@ -1,7 +1,7 @@
 """
 Configuration file for Air Quality Data Analysis Project
 """
-
+ 
 import os
 
 # Project root directory
