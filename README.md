@@ -67,26 +67,94 @@ Average PM2.5 concentrations across different seasons, highlighting winter peaks
 ### Pollutant Correlations
 Heatmap showing relationships between major air pollutants.
 
-![Pollutant Correlations](visuals/pollution_correlation.png)
+# 🌍 Air Quality Analysis: India 2015-2024
 
-### City-wise Distribution
-Box plot comparing PM2.5 distributions across major cities.
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-2.3.3-orange.svg)](https://pandas.pydata.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-2.3.5-lightblue.svg)](https://numpy.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.10.7-red.svg)](https://matplotlib.org/)
+[![Seaborn](https://img.shields.io/badge/Seaborn-0.13.2-blue.svg)](https://seaborn.pydata.org/)
+[![Plotly](https://img.shields.io/badge/Plotly-6.5.0-green.svg)](https://plotly.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![City Comparison](visuals/city_pm25_boxplot.png)
+![PM2.5 Example](visuals/pm25_trend.png)
 
-### Yearly Trends
-Annual average PM2.5 levels for top cities over the decade.
+A concise, human-written analysis of air pollution across Indian cities (2015–2024). This repo contains scripts to clean, analyze and visualize the dataset — designed to be clear for reviewers and recruiters.
 
-![Yearly Trends](visuals/yearly_pm25_trends.png)
+---
 
-## 📁 Project Structure
+## 📋 Index (quick links)
+
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Getting Started](#getting-started)
+- [Analysis Results](#analysis-results)
+- [Project Structure](#project-structure)
+- [Technologies](#technologies)
+- [Data Variables](#data-variables)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Project Overview
+
+This repository analyzes air quality measurements from multiple Indian cities over 2015–2024. The focus is on clear data preparation, interpretable visualizations, and reproducible scripts.
+
+## Key Features
+
+- Data cleaning and preprocessing
+- Monthly and yearly PM2.5 trend analysis
+- Seasonal comparisons and labeled bar charts
+- Pollutant correlation heatmaps
+- City-level distribution comparisons (boxplots)
+- Simple interactive dashboards (optional)
+
+## Getting Started
+
+### Prerequisites
+- Python 3.8+ installed
+- pip available
+
+### Installation
+
+Clone and install:
+```powershell
+git clone https://github.com/Abhinav-TheAnalyst/air-quality-india-2015-2024.git
+cd "air-quality-india-2015-2024"
+pip install -r requirements.txt
+```
+
+### Quick commands
+```powershell
+# Clean data
+python scripts/clean_data.py
+
+# Run the main analysis (creates images in visuals/)
+python scripts/air_quality_analysis.py
+
+# Optional reports
+python scripts/city_ranking.py
+python scripts/seasonal_analysis.py
+```
+
+## Analysis Results
+
+Example outputs (saved to `visuals/`):
+
+- `pm25_trend.png` — Monthly PM2.5 trends for top cities
+- `seasonal_pm25.png` — Average PM2.5 by season with labels
+- `pollution_correlation.png` — Correlation heatmap for pollutants
+- `city_pm25_boxplot.png` — Boxplots comparing city PM2.5 distributions
+- `yearly_pm25_trends.png` — Annual averages across top cities
+
+## Project Structure
 
 ```
 air-quality-india-2015-2024/
 │
 ├── data/
-│   ├── raw/                 # Original dataset files
-│   └── processed/           # Cleaned and processed data
+│   └── processed/           # Cleaned and processed data (used by scripts)
 │
 ├── scripts/                 # Python analysis scripts
 │   ├── clean_data.py        # Data preprocessing
@@ -95,136 +163,45 @@ air-quality-india-2015-2024/
 │   ├── seasonal_analysis.py # Seasonal pattern analysis
 │   └── interactive_visualizations.py  # Interactive plots
 │
-├── visuals/                 # Generated charts and plots
+├── visuals/                 # Generated charts and plots (output)
 ├── output/                  # Analysis results and summaries
 │
-├── config.py                # Configuration settings
+├── config.py                # Optional configuration
 ├── requirements.txt         # Python dependencies
-├── README.md               # Project documentation
-└── LICENSE                 # MIT License
+├── README.md                # This file
+└── LICENSE                  # MIT License
 ```
 
-## 🛠️ Technologies Used
+> Note: The `data/raw/` folder (original source CSVs) is not included in the public README listing. If you need the raw source files, they can be downloaded from the Kaggle dataset linked below.
 
-- **Python**: Core programming language
-- **Pandas**: Data manipulation and analysis
-- **NumPy**: Numerical computations
-- **Matplotlib**: Static plotting
-- **Seaborn**: Statistical visualizations
-- **Plotly**: Interactive web-based charts
+## Technologies
 
-## 📊 Data Source
+- Python, Pandas, NumPy
+- Matplotlib, Seaborn for static plots
+- Plotly for interactive charts (optional)
 
-The dataset used in this analysis is sourced from Kaggle:
-- **Title**: Air Quality Data in India (2015-2024)
-- **Source**: [Kaggle Dataset](https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india)
-- **Coverage**: Daily air quality measurements from monitoring stations across Indian cities
+## Data Variables
 
-### Data Variables
-- **PM2.5, PM10**: Particulate matter concentrations
-- **NO, NO2, NOx**: Nitrogen oxides
-- **SO2**: Sulfur dioxide
-- **CO**: Carbon monoxide
-- **O3**: Ozone
-- **AQI**: Air Quality Index
-- **Other**: Benzene, Toluene, Xylene (VOC pollutants)
+Common columns in processed data:
 
-## 🤝 Contributing
+- `PM2.5`, `PM10` — particulate matter (µg/m³)
+- `NO`, `NO2`, `NOx` — nitrogen oxides (µg/m³)
+- `SO2` — sulfur dioxide (µg/m³)
+- `CO` — carbon monoxide (mg/m³)
+- `O3` — ozone (µg/m³)
+- `AQI` — air quality index
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## Contributing
 
-## 📄 License
+Contributions welcome. Open an issue or submit a PR with small, focused changes.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## License
 
-## 📞 Contact
+MIT — see the `LICENSE` file.
 
-For questions or suggestions, please open an issue on GitHub.
-```
+## Data Source
 
-air-quality-data-2015-2024/
-│
-├── data/
-│   ├── raw/        # Original CSV files
-│   ├── processed/  # Processed datasets
-│   └── output/     # Analysis outputs
-│
-├── visuals/        # Plots, graphs & dashboards
-├── scripts/        # Python scripts for analysis
-└── notebooks/      # Jupyter notebooks
-
-````
-
----
-
-## Tech Stack
-- **Languages:** Python 3.10+  
-- **Libraries:** Pandas, NumPy, Matplotlib, Seaborn  
-- **Environment:** Jupyter Notebook / VS Code  
-- **Tools:** Git & GitHub  
-- **Concepts:** ETL, Time-Series Analysis, Data Visualization, Correlation Analysis
-
----
-
-## Key Features
-- **Automated Data Cleaning:** Removes duplicates, fixes missing values, standardizes dates.  
-- **Trend Analysis:** PM2.5 trends over time for each dataset.  
-- **Top Polluted Cities:** Ranking of cities by average AQI.  
-- **Seasonal Trends:** Average pollutant levels by season.  
-- **City Pollution Over Years:** Trends in AQI for top cities.  
-- **Station Analysis:** Number of monitoring stations per city.  
-- **Pollution Hotspots:** Clustering of cities by pollution levels.
-
----
-
-## Key Visualizations
-### PM2.5 Trends
-![PM2.5 Trend](visuals/run_example_pm25.png)
-Dive into the vibrant ebb and flow of PM2.5 pollution levels across Indian cities from 2015 to 2024. This striking line chart highlights seasonal spikes and yearly patterns, painting a clear picture of air quality evolution with bold, intuitive visuals.
-
-### Seasonal Pollutant Trends
-![Seasonal PM2.5](visuals/seasonal_pm25.png)
-Uncover the dynamic distribution and seasonal rhythms of key pollutants in this colorful visualization. It vividly illustrates peak pollution periods, using engaging hues to make complex data patterns easy to grasp and remember.
-
-### Top Polluted Cities
-![Top Polluted Cities](visuals/top_polluted_cities.png)
-Ranked in a bold bar chart, this visualization spotlights India's most polluted cities by average AQI. With eye-catching colors and sharp contrasts, it delivers a compelling comparison of urban air quality challenges at a glance.
-
-### Pollution Hotspots
-![Pollution Hotspots](visuals/pollution_hotspots_clusters.png)
-Explore pollution hotspots through this innovative clustering analysis. Cities with similar pollution profiles are grouped in a visually appealing scatter plot, revealing geographical patterns with vibrant clusters that highlight regional air quality stories.
-
-### City Pollution Over Years
-![City Pollution Over Years](visuals/city_pollution_over_years_top6.png)
-Track the decade-long journey of pollution in selected cities with this elegant yearly summary chart. Featuring smooth lines and rich colors, it showcases trends and changes in air quality, making long-term insights both accessible and captivating.
-
-### Stations per City
-![Stations per City](visuals/stations_per_city.png)
-This informative bar chart displays the number of monitoring stations per city, using a palette of fresh colors to emphasize data coverage and reliability. It's a quick, visually engaging way to assess the robustness of air quality monitoring across India.
-
-### Additional Charts
-### Station PM2.5 Trend
-![Station PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
-Delve into weekly PM2.5 trends from individual stations in this polished visualization. With a harmonious color scheme, it provides a location-specific view of pollution levels, highlighting trends in air quality.
-
-### Seasonal CO
-![Seasonal CO](visuals/seasonal_co.png)
-Witness the seasonal dance of Carbon Monoxide (CO) levels in this lively chart. Using warm, inviting colors, it reveals how CO concentrations fluctuate across seasons, offering a fresh perspective on this critical pollutant.
-
-### Seasonal NO
-![Seasonal NO](visuals/seasonal_no.png)
-This visualization brings seasonal Nitrogen Oxide (NO) patterns to life with bold, contrasting hues. It helps decode seasonal impacts on NO levels, transforming data into an engaging narrative of urban pollution.
-
-### Seasonal NO2
-![Seasonal NO2](visuals/seasonal_no2.png)
-Explore Nitrogen Dioxide (NO2) trends through the seasons in this eye-popping chart. With a palette that pops, it provides clear insights into urban air pollution variations, making complex seasonal data feel approachable and fun.
-
-### Seasonal O3
-![Seasonal O3](visuals/seasonal_o3.png)
-Highlighting Ozone (O3) concentrations, this chart uses serene yet striking colors to illustrate seasonal patterns. It spotlights periods of elevated ozone, delivering a visually soothing yet informative experience.
-
-### Seasonal PM10
-![Seasonal PM10](visuals/seasonal_pm10.png)
+Kaggle: Air Quality Data in India (2015-2024) — https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india
 Track the seasonal ebb and flow of PM10 particulate matter in this robust visualization. Featuring earthy tones and clear lines, it offers a grounded view of how larger particulates fluctuate, with colors that evoke the natural cycles of pollution.
 
 ### Seasonal SO2
