@@ -155,7 +155,7 @@ Station-level hourly correlations.
 
 ### Interactive Visualizations
 [Interactive PM2.5 Trends](visuals/city_day_cleaned_pm25_trend_interactive.html)
-Interactive daily PM2.5 trends by city.
+Interactive weekly PM2.5 trends by city.
 
 [Interactive Top Polluted Cities](visuals/top_polluted_cities_interactive.html)
 Interactive bar chart of top polluted cities.

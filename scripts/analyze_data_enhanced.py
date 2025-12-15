@@ -105,13 +105,13 @@ def analyze_file(filename):
     if "PM2.5" in df.columns:
         logging.info("Plotting PM2.5 trend…")
 
-        # Resample to daily averages for better visibility (especially for hourly data)
+        # Resample to weekly averages for better visibility (especially for hourly data)
         df_indexed = df.set_index(date_col)
-        daily_pm25 = df_indexed['PM2.5'].resample('D').mean()
+        daily_pm25 = df_indexed['PM2.5'].resample('W').mean()
 
         plt.figure(figsize=(10, 5))
         daily_pm25.plot(color='darkblue', linewidth=2, marker='s', markersize=4, markerfacecolor='red')
-        plt.title(f"Daily Average PM2.5 Over Time ({filename})", fontsize=16, fontweight='bold')
+        plt.title(f"Weekly Average PM2.5 Over Time ({filename})", fontsize=16, fontweight='bold')
         plt.xlabel("Date", fontsize=14)
         plt.ylabel("PM2.5", fontsize=14)
         plt.grid(True, linestyle='--', alpha=0.7)
