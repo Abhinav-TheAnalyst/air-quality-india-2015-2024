@@ -104,17 +104,9 @@ Track the decade-long journey of pollution in selected cities with this elegant 
 This informative bar chart displays the number of monitoring stations per city, using a palette of fresh colors to emphasize data coverage and reliability. It's a quick, visually engaging way to assess the robustness of air quality monitoring across India.
 
 ### Additional Charts
-### City Hour PM2.5 Trend
-![City Hour PM2.5 Trend](visuals/city_hour_cleaned_pm25_trend.png)
-Zoom into hourly PM2.5 fluctuations with this detailed trend chart. Bursting with color-coded data points, it offers granular insights into daily air quality variations, perfect for spotting short-term pollution events.
-
-### Station Day PM2.5 Trend
-![Station Day PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
-Delve into daily PM2.5 trends from individual stations in this polished visualization. With a harmonious color scheme, it provides a granular, location-specific view of pollution levels, highlighting micro-trends in air quality.
-
-### Station Hour PM2.5 Trend
-![Station Hour PM2.5 Trend](visuals/station_hour_cleaned_pm25_trend.png)
-Experience the pulse of hourly PM2.5 changes at specific stations through this dynamic chart. Its vibrant design captures short-term variations, making it an exciting tool for understanding real-time air quality dynamics.
+### Station PM2.5 Trend
+![Station PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
+Delve into weekly PM2.5 trends from individual stations in this polished visualization. With a harmonious color scheme, it provides a location-specific view of pollution levels, highlighting trends in air quality.
 
 ### Seasonal CO
 ![Seasonal CO](visuals/seasonal_co.png)
@@ -141,17 +133,11 @@ Track the seasonal ebb and flow of PM10 particulate matter in this robust visual
 This chart vividly displays Sulfur Dioxide (SO2) seasonal variations with industrial-inspired colors. It aids in understanding seasonal influences on this pollutant, using a design that's as informative as it is visually striking.
 
 ### Pollutant Correlations
-![City Day Correlation](visuals/city_day_cleaned_correlation.png)
+![City Correlation](visuals/city_day_cleaned_correlation.png)
 Heatmap showing correlations between pollutants in daily city data, revealing relationships with a plasma color scale.
 
-![City Hour Correlation](visuals/city_hour_cleaned_correlation.png)
-Heatmap for hourly city data correlations.
-
-![Station Day Correlation](visuals/station_day_cleaned_correlation.png)
+![Station Correlation](visuals/station_day_cleaned_correlation.png)
 Station-level daily correlations.
-
-![Station Hour Correlation](visuals/station_hour_cleaned_correlation.png)
-Station-level hourly correlations.
 
 ### Interactive Visualizations
 [Interactive PM2.5 Trends](visuals/city_day_cleaned_pm25_trend_interactive.html)

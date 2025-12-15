@@ -14,9 +14,7 @@ VIS_PATH = "../visuals/"
 
 FILES = [
     "city_day_cleaned.csv",
-    "city_hour_cleaned.csv",
     "station_day_cleaned.csv",
-    "station_hour_cleaned.csv",
     "stations_cleaned.csv"
 ]
 
