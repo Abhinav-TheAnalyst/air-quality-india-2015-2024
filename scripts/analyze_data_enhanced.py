@@ -1,138 +1,88 @@
+# scripts/analyze_data_enhanced.py
+"""
+Simple Data Analysis for Air Quality Dataset
+
+This script creates basic visualizations and analysis.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-import logging
-from scipy import stats
-from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Set style
+plt.style.use('default')
+sns.set_palette("husl")
 
-CLEAN_PATH = "../data/processed/"
-VIS_PATH = "../visuals/"
+# Paths
+PROCESSED_DIR = "../data/processed/"
+VISUALS_DIR = "../visuals/"
 
-FILES = [
-    "city_day_cleaned.csv",
-    "station_day_cleaned.csv",
-    "stations_cleaned.csv"
-]
+def create_pm25_trend():
+    """Create PM2.5 trend plot."""
+    df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
 
-# Auto-detect date column names
-POSSIBLE_DATE_COLUMNS = [
-    "Date", "date", "timestamp", "Datetime", "DateTime",
-    "DATE", "RecordedDate", "dt"
-]
+    # Group by city and date
+    trend = df.groupby(['Datetime', 'City'])['PM2.5'].mean().reset_index()
 
-def detect_date_column(df):
-    for col in POSSIBLE_DATE_COLUMNS:
-        if col in df.columns:
-            return col
-    return None
+    plt.figure(figsize=(12, 6))
+    for city in trend['City'].unique()[:5]:  # Top 5 cities
+        city_data = trend[trend['City'] == city]
+        plt.plot(city_data['Datetime'], city_data['PM2.5'], label=city, marker='o', markersize=2)
 
-def seasonal_anova_test(df, date_col, value_col, filename):
-    """Perform ANOVA test for seasonal differences."""
-    if date_col not in df.columns or value_col not in df.columns:
-        logging.warning(f"Columns {date_col} or {value_col} not found. Skipping ANOVA.")
-        return
-
-    df = df.copy()
-    df[date_col] = pd.to_datetime(df[date_col])
-    df['Season'] = df[date_col].dt.month % 12 // 3 + 1  # 1: Winter, 2: Spring, 3: Summer, 4: Fall
-    df['Season'] = df['Season'].map({1: 'Winter', 2: 'Spring', 3: 'Summer', 4: 'Fall'})
-
-    seasons = df['Season'].unique()
-    if len(seasons) < 2:
-        logging.info("Not enough seasons for ANOVA test.")
-        return
-
-    groups = [df[df['Season'] == season][value_col].dropna() for season in seasons]
-
-    # ANOVA
-    f_stat, p_value = stats.f_oneway(*groups)
-    logging.info(f"ANOVA for {value_col} across seasons: F={f_stat:.2f}, p={p_value:.4f}")
-
-    if p_value < 0.05:
-        logging.info("Significant seasonal differences found.")
-        # Post-hoc Tukey test
-        tukey = pairwise_tukeyhsd(df[value_col], df['Season'])
-        logging.info(f"Tukey HSD results:\n{tukey}")
-    else:
-        logging.info("No significant seasonal differences.")
-
-def correlation_analysis(df, filename):
-    """Perform correlation analysis on pollutants."""
-    pollutants = ['PM2.5', 'PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3', 'Benzene', 'Toluene', 'Xylene']
-    available_pollutants = [p for p in pollutants if p in df.columns]
-
-    if len(available_pollutants) < 2:
-        logging.warning("Not enough pollutants for correlation analysis.")
-        return
-
-    corr_matrix = df[available_pollutants].corr()
-
-    plt.figure(figsize=(12, 10))
-    sns.heatmap(corr_matrix, annot=True, cmap='plasma', center=0, square=True, linewidths=0.5)
-    plt.title(f"Pollutant Correlation Matrix ({filename})", fontsize=16, fontweight='bold')
+    plt.title('PM2.5 Trends by City (2015-2024)')
+    plt.xlabel('Date')
+    plt.ylabel('PM2.5 (µg/m³)')
+    plt.legend()
+    plt.xticks(rotation=45)
     plt.tight_layout()
-    out_path = VIS_PATH + filename.replace(".csv", "_correlation.png")
-    plt.savefig(out_path, dpi=200)
+    plt.savefig(VISUALS_DIR + 'pm25_trend.png', dpi=150)
     plt.close()
-    logging.info(f"Saved correlation heatmap: {out_path}")
 
-def analyze_file(filename):
-    logging.info(f"Analyzing: {filename}")
+def create_pollution_heatmap():
+    """Create correlation heatmap."""
+    df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
 
-    df = pd.read_csv(CLEAN_PATH + filename)
+    pollutants = ['PM2.5', 'PM10', 'NO2', 'SO2', 'CO', 'O3']
+    corr = df[pollutants].corr()
 
-    logging.info(f"Columns found: {df.columns.tolist()}")
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(corr, annot=True, cmap='coolwarm', center=0)
+    plt.title('Pollutant Correlation Matrix')
+    plt.tight_layout()
+    plt.savefig(VISUALS_DIR + 'pollution_correlation.png', dpi=150)
+    plt.close()
 
-    date_col = detect_date_column(df)
+def create_seasonal_analysis():
+    """Create seasonal PM2.5 analysis."""
+    df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
+    df['Datetime'] = pd.to_datetime(df['Datetime'])
+    df['Month'] = df['Datetime'].dt.month
 
-    if not date_col:
-        logging.warning("No date column found. Skipping time-based analysis.")
-        return
+    # Map months to seasons
+    season_map = {12: 'Winter', 1: 'Winter', 2: 'Winter',
+                  3: 'Spring', 4: 'Spring', 5: 'Spring',
+                  6: 'Summer', 7: 'Summer', 8: 'Summer',
+                  9: 'Fall', 10: 'Fall', 11: 'Fall'}
+    df['Season'] = df['Month'].map(season_map)
 
-    logging.info(f"Date column detected: {date_col}")
+    seasonal_avg = df.groupby('Season')['PM2.5'].mean().reindex(['Winter', 'Spring', 'Summer', 'Fall'])
 
-    # Convert date column
-    df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
-    df = df.dropna(subset=[date_col])
-
-    # PM2.5 trend
-    if "PM2.5" in df.columns:
-        logging.info("Plotting PM2.5 trend…")
-
-        # Resample to weekly averages for better visibility (especially for hourly data)
-        df_indexed = df.set_index(date_col)
-        daily_pm25 = df_indexed['PM2.5'].resample('W').mean()
-
-        plt.figure(figsize=(10, 5))
-        daily_pm25.plot(color='darkblue', linewidth=2, marker='s', markersize=4, markerfacecolor='red')
-        plt.title(f"Weekly Average PM2.5 Over Time ({filename})", fontsize=16, fontweight='bold')
-        plt.xlabel("Date", fontsize=14)
-        plt.ylabel("PM2.5", fontsize=14)
-        plt.grid(True, linestyle='--', alpha=0.7)
-        plt.tight_layout()
-
-        out_path = VIS_PATH + filename.replace(".csv", "_pm25_trend.png")
-        plt.savefig(out_path, dpi=200)
-        plt.close()
-
-        logging.info(f"Saved: {out_path}")
-
-        # Seasonal ANOVA for PM2.5
-        seasonal_anova_test(df, date_col, "PM2.5", filename)
-
-    else:
-        logging.warning("No PM2.5 column. Skipping PM2.5 analysis.")
-
-    # Correlation analysis
-    correlation_analysis(df, filename)
+    plt.figure(figsize=(8, 5))
+    seasonal_avg.plot(kind='bar', color=['blue', 'green', 'red', 'orange'])
+    plt.title('Average PM2.5 by Season')
+    plt.xlabel('Season')
+    plt.ylabel('PM2.5 (µg/m³)')
+    plt.tight_layout()
+    plt.savefig(VISUALS_DIR + 'seasonal_pm25.png', dpi=150)
+    plt.close()
 
 def main():
-    for f in FILES:
-        analyze_file(f)
+    """Run all analyses."""
+    print("Creating visualizations...")
+    create_pm25_trend()
+    create_pollution_heatmap()
+    create_seasonal_analysis()
+    print("Analysis complete!")
 
 if __name__ == "__main__":
     main()
