@@ -16,11 +16,12 @@ This project demonstrates a **complete end-to-end data pipeline**, including **d
 5. [Key Features](#key-features)
 6. [Key Visualizations](#key-visualizations)
 7. [Key Insights](#key-insights)
-8. [Installation & Usage](#installation--usage)
-9. [Future Enhancements](#future-enhancements)
-10. [Contributing](#contributing)
-11. [Author](#author)
-12. [License](#license)
+8. [Requirements](#requirements)
+9. [Installation & Usage](#installation--usage)
+10. [Future Enhancements](#future-enhancements)
+11. [Contributing](#contributing)
+12. [Author](#author)
+13. [License](#license)
 
 ---
 
@@ -80,66 +81,68 @@ air-quality-data-2015-2024/
 ## Key Visualizations
 ### PM2.5 Trends
 ![PM2.5 Trend](visuals/pm25_trend.png)
-This chart illustrates the overall trends in PM2.5 pollution levels across Indian cities from 2015 to 2024, highlighting seasonal and yearly variations.
+Dive into the vibrant ebb and flow of PM2.5 pollution levels across Indian cities from 2015 to 2024. This striking line chart highlights seasonal spikes and yearly patterns, painting a clear picture of air quality evolution with bold, intuitive visuals.
 
 ### Seasonal Pollutant Trends
 ![Pollutant Distribution](visuals/pollutant_distribution.png)
-This visualization shows the distribution and seasonal patterns of various pollutants, helping to identify peak pollution periods throughout the year.
+Uncover the dynamic distribution and seasonal rhythms of key pollutants in this colorful visualization. It vividly illustrates peak pollution periods, using engaging hues to make complex data patterns easy to grasp and remember.
 
 ### Top Polluted Cities
 ![Top Cities](visuals/top_cities.png)
-This bar chart ranks the top polluted cities in India based on average AQI levels, providing a clear comparison of pollution severity across major urban areas.
+Ranked in a bold bar chart, this visualization spotlights India's most polluted cities by average AQI. With eye-catching colors and sharp contrasts, it delivers a compelling comparison of urban air quality challenges at a glance.
 
 ### Pollution Hotspots
 ![Pollution Hotspots](visuals/pollution_hotspots_clusters.png)
-This clustering analysis identifies pollution hotspots by grouping cities with similar pollution profiles, revealing geographical patterns in air quality.
+Explore pollution hotspots through this innovative clustering analysis. Cities with similar pollution profiles are grouped in a visually appealing scatter plot, revealing geographical patterns with vibrant clusters that highlight regional air quality stories.
 
 ### City Pollution Over Years
 ![Yearly Summary](visuals/yearly_summary.png)
-This chart displays the yearly summary of pollution levels for selected cities, showing trends and changes in air quality over the decade.
+Track the decade-long journey of pollution in selected cities with this elegant yearly summary chart. Featuring smooth lines and rich colors, it showcases trends and changes in air quality, making long-term insights both accessible and captivating.
 
 ### Stations per City
 ![Station Stats](visuals/station_stats.png)
-This visualization presents the number of air quality monitoring stations available in each city, indicating the coverage and reliability of pollution data.
+This informative bar chart displays the number of monitoring stations per city, using a palette of fresh colors to emphasize data coverage and reliability. It's a quick, visually engaging way to assess the robustness of air quality monitoring across India.
 
 ### Additional Charts
 ### City Hour PM2.5 Trend
 ![City Hour PM2.5 Trend](visuals/city_hour_cleaned_pm25_trend.png)
-This chart shows the PM2.5 pollution trends over time based on hourly city-level data, offering detailed insights into daily and hourly fluctuations.
+Zoom into hourly PM2.5 fluctuations with this detailed trend chart. Bursting with color-coded data points, it offers granular insights into daily air quality variations, perfect for spotting short-term pollution events.
 
 ### Station Day PM2.5 Trend
 ![Station Day PM2.5 Trend](visuals/station_day_cleaned_pm25_trend.png)
-This visualization depicts PM2.5 trends from daily station data, providing a granular view of pollution levels at specific monitoring locations.
+Delve into daily PM2.5 trends from individual stations in this polished visualization. With a harmonious color scheme, it provides a granular, location-specific view of pollution levels, highlighting micro-trends in air quality.
 
 ### Station Hour PM2.5 Trend
 ![Station Hour PM2.5 Trend](visuals/station_hour_cleaned_pm25_trend.png)
-This chart illustrates hourly PM2.5 trends from station-level data, highlighting short-term variations in air quality at individual monitoring points.
+Experience the pulse of hourly PM2.5 changes at specific stations through this dynamic chart. Its vibrant design captures short-term variations, making it an exciting tool for understanding real-time air quality dynamics.
 
 ### Seasonal CO
 ![Seasonal CO](visuals/seasonal_co.png)
-This chart shows the seasonal trends in Carbon Monoxide (CO) levels, revealing how CO concentrations vary across different seasons.
+Witness the seasonal dance of Carbon Monoxide (CO) levels in this lively chart. Using warm, inviting colors, it reveals how CO concentrations fluctuate across seasons, offering a fresh perspective on this critical pollutant.
 
 ### Seasonal NO
 ![Seasonal NO](visuals/seasonal_no.png)
-This visualization displays seasonal patterns in Nitrogen Oxide (NO) levels, helping to understand seasonal impacts on this pollutant.
+This visualization brings seasonal Nitrogen Oxide (NO) patterns to life with bold, contrasting hues. It helps decode seasonal impacts on NO levels, transforming data into an engaging narrative of urban pollution.
 
 ### Seasonal NO2
 ![Seasonal NO2](visuals/seasonal_no2.png)
-This chart illustrates the seasonal trends in Nitrogen Dioxide (NO2) concentrations, providing insights into seasonal variations in urban air pollution.
+Explore Nitrogen Dioxide (NO2) trends through the seasons in this eye-popping chart. With a palette that pops, it provides clear insights into urban air pollution variations, making complex seasonal data feel approachable and fun.
 
 ### Seasonal O3
 ![Seasonal O3](visuals/seasonal_o3.png)
-This visualization shows seasonal patterns in Ozone (O3) levels, highlighting periods of higher ozone concentration in the atmosphere.
+Highlighting Ozone (O3) concentrations, this chart uses serene yet striking colors to illustrate seasonal patterns. It spotlights periods of elevated ozone, delivering a visually soothing yet informative experience.
 
 ### Seasonal PM10
 ![Seasonal PM10](visuals/seasonal_pm10.png)
-This chart depicts seasonal trends in PM10 particulate matter, offering a view of how larger particulate pollution fluctuates throughout the year.
+Track the seasonal ebb and flow of PM10 particulate matter in this robust visualization. Featuring earthy tones and clear lines, it offers a grounded view of how larger particulates fluctuate, with colors that evoke the natural cycles of pollution.
 
 ### Seasonal SO2
 ![Seasonal SO2](visuals/seasonal_so2.png)
-This visualization displays seasonal variations in Sulfur Dioxide (SO2) levels, aiding in understanding seasonal influences on this industrial pollutant.
+This chart vividly displays Sulfur Dioxide (SO2) seasonal variations with industrial-inspired colors. It aids in understanding seasonal influences on this pollutant, using a design that's as informative as it is visually striking.
 
----
+### City Comparison Dashboard
+[Interactive City Comparison Dashboard](visuals/city_comparison_dashboard.html)
+An interactive HTML dashboard built with Plotly, allowing users to compare pollution levels across cities dynamically. Explore trends, averages, and insights with engaging, interactive charts that bring the data to life in a fully immersive, colorful experience.
 
 ## Key Insights
 - Delhi consistently ranks highest in PM2.5 levels.  
@@ -150,20 +153,41 @@ This visualization displays seasonal variations in Sulfur Dioxide (SO2) levels, 
 
 ---
 
+## Requirements
+
+The project dependencies are listed below (from `requirements.txt`):
+
+```
+pandas==2.3.3
+numpy==2.3.5
+matplotlib==3.10.7
+seaborn==0.13.2
+plotly==6.5.0
+scikit-learn==1.7.2
+scipy==1.16.3
+statsmodels==0.14.5
+matplotlib-venn==1.1.2
+pillow==12.0.0
+```
+
 ## Installation & Usage
 
 ### 1️⃣ Clone & Navigate
 ```bash
 # Clone the repository
-git clone https://github.com/abhinav0077/air-quality-india-2015-2024.git
+git clone https://github.com/Abhinav-TheAnalyst/air-quality-india-2015-2024.git
 cd air-quality-india-2015-2024
 ````
 
 ### 2️⃣ Install Dependencies
 
 ```bash
-# Install required Python libraries
-pip install pandas numpy matplotlib seaborn plotly streamlit prophet scipy statsmodels
+# (optional) Create and activate a virtual environment (PowerShell)
+python -m venv .venv
+. .venv\Scripts\Activate.ps1
+
+# Install required Python libraries from the pinned requirements file
+pip install -r requirements.txt
 ```
 
 ### 3️⃣ Run Data Cleaning
@@ -171,6 +195,14 @@ pip install pandas numpy matplotlib seaborn plotly streamlit prophet scipy stats
 ```bash
 # Run the cleaning script
 python scripts/clean_data.py
+```
+
+### Quick demo
+
+Run the small example script (prints a summary and saves a demo PM2.5 plot):
+
+```powershell
+python .\scripts\run_example.py
 ```
 
 ### 4️⃣ Run Analysis & Visualizations
@@ -213,8 +245,8 @@ Contributions are welcome!
 
 **Abhinav Verma** – Aspiring Data Analyst / Data Scientist
 
-* LinkedIn: [LinkedIn](https://www.linkedin.com/in/abhinav-verma-0077/)
-* GitHub: [abhinav0077](https://github.com/abhinav0077)
+* LinkedIn: [LinkedIn](https://www.linkedin.com/in/abhinav-theanalyst/)
+* GitHub: [Abhinav-TheAnalyst](https://github.com/Abhinav-TheAnalyst)
 
 ---
 
