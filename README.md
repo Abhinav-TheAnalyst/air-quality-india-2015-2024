@@ -219,9 +219,11 @@ Interactive seasonal trends.
 [Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
 Interactive correlation heatmap.
 
-### City Comparison Dashboard
-[Interactive City Comparison Dashboard](visuals/city_comparison_dashboard.html)
-An interactive HTML dashboard built with Plotly, allowing users to compare pollution levels across cities dynamically. Explore trends, averages, and insights with engaging, interactive charts that bring the data to life in a fully immersive, colorful experience.
+[Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
+[Interactive PM2.5 Trends](visuals/city_day_cleaned_pm25_trend_interactive.html)
+[Interactive Top Polluted Cities](visuals/top_polluted_cities_interactive.html)
+[Interactive Seasonal PM2.5 Trends](visuals/seasonal_pm25_trends_interactive.html)
+[Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
  
 <!-- Original raw data preview removed from README. Raw CSVs remain in `data/raw/` if you need them locally. -->
 
@@ -346,4 +348,3 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 - Built reproducible analysis scripts and a small demo runner (`scripts/run_example.py`) so reviewers can quickly run a demo.
 - Learned how to prepare outputs for sharing: CSV summaries in `output/` and visuals in `visuals/`; replaced a bulky PDF report with a lightweight `output/summary_report.md` and a small generator script to recreate it.
 
-If you'd like, I can expand this section with specific lessons (libraries used, pitfalls, improvements you would make next) or convert it into a short 'Lessons learned' slide for portfolio use.
