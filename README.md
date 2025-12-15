@@ -206,24 +206,39 @@ Heatmap showing correlations between pollutants in daily city data, revealing re
 ![Station Correlation](visuals/station_day_cleaned_correlation.png)
 Station-level daily correlations.
 
-### Interactive Visualizations
-[Interactive PM2.5 Trends](visuals/city_day_cleaned_pm25_trend_interactive.html)
-Interactive weekly PM2.5 trends by city.
+### Interactive Visualizations (static previews)
+Below are static previews of the main interactive dashboards — these render reliably on GitHub. The interactive HTML files are included in `visuals/`, but GitHub's file viewer may not execute the embedded JavaScript. See the note below to open them locally.
 
-[Interactive Top Polluted Cities](visuals/top_polluted_cities_interactive.html)
-Interactive bar chart of top polluted cities.
+- **PM2.5 Monthly Trends (preview):**
 
-[Interactive Seasonal PM2.5 Trends](visuals/seasonal_pm25_trends_interactive.html)
-Interactive seasonal trends.
+	![PM2.5 Monthly Trends](visuals/pm25_trend.png)
 
-[Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
-Interactive correlation heatmap.
+- **Seasonal PM2.5 Trends (preview):**
 
-[Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
-[Interactive PM2.5 Trends](visuals/city_day_cleaned_pm25_trend_interactive.html)
-[Interactive Top Polluted Cities](visuals/top_polluted_cities_interactive.html)
-[Interactive Seasonal PM2.5 Trends](visuals/seasonal_pm25_trends_interactive.html)
-[Interactive Correlations](visuals/city_day_cleaned_correlation_interactive.html)
+	![Seasonal PM2.5 Trends](visuals/seasonal_pm25.png)
+
+- **Pollutant Correlations (preview):**
+
+	![City Correlation](visuals/city_day_cleaned_correlation.png)
+
+- **Top Polluted Cities (preview):**
+
+	![Top Polluted Cities](visuals/top_polluted_cities.png)
+
+Note: The interactive HTML files are in the `visuals/` folder (for example `visuals/city_day_cleaned_pm25_trend_interactive.html`). To view them locally (recommended):
+
+```powershell
+# From the project root
+python -m http.server 8000
+# Open in your browser:
+# http://localhost:8000/visuals/city_day_cleaned_pm25_trend_interactive.html
+```
+
+To (re)generate the interactive files locally, run:
+
+```powershell
+python .\scripts\interactive_visualizations.py
+```
  
 <!-- Original raw data preview removed from README. Raw CSVs remain in `data/raw/` if you need them locally. -->
 
