@@ -1,49 +1,145 @@
 # Air Quality Analysis: India 2015-2024
 
-Analysis of air pollution data across Indian cities using Python, Pandas, NumPy, Matplotlib, Seaborn, and Plotly.
+A comprehensive data analysis project examining air pollution trends across major Indian cities from 2015 to 2024. This project demonstrates end-to-end data science workflow including data cleaning, exploratory analysis, and visualization.
 
-## Features
-- Data cleaning and preprocessing
-- Monthly PM2.5 trend analysis by city
-- Seasonal pollution patterns with value labels
-- Pollutant correlation analysis
-- City comparison boxplots
-- Yearly average trends
-- Interactive visualizations
+## 📊 Project Overview
 
-## Quick Start
+This repository contains an analysis of air quality data collected from various monitoring stations across Indian cities. The dataset covers 10 years of daily air quality measurements, providing insights into pollution patterns, seasonal variations, and city-wise comparisons.
 
+## ✨ Key Features
+
+- **Data Cleaning Pipeline**: Automated preprocessing of raw data with missing value imputation
+- **Trend Analysis**: Monthly and yearly PM2.5 trends for major cities
+- **Seasonal Patterns**: Analysis of pollution variations across seasons
+- **Correlation Studies**: Relationships between different pollutants
+- **City Comparisons**: Statistical comparison of air quality across cities
+- **Interactive Visualizations**: Web-based dashboards for data exploration
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.8+
+- pip package manager
+
+### Installation
+
+1. Clone the repository:
 ```bash
-# Install requirements
-pip install pandas numpy matplotlib seaborn plotly
-
-# Run analysis
-python scripts/clean_data.py
-python scripts/analyze_data_enhanced.py
+git clone https://github.com/Abhinav-TheAnalyst/air-quality-india-2015-2024.git
+cd air-quality-india-2015-2024
 ```
 
-## Visualizations
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Usage
+
+1. Clean the raw data:
+```bash
+python scripts/clean_data.py
+```
+
+2. Run the main analysis:
+```bash
+python scripts/air_quality_analysis.py
+```
+
+3. Generate additional reports (optional):
+```bash
+python scripts/city_ranking.py
+python scripts/seasonal_analysis.py
+```
+
+## 📈 Analysis Results
 
 ### PM2.5 Monthly Trends
-![PM2.5 Trends](visuals/pm25_trend.png)
+Monthly averaged PM2.5 levels showing long-term trends for top polluted cities.
 
-### Seasonal Analysis
-![Seasonal PM2.5](visuals/seasonal_pm25.png)
+![PM2.5 Monthly Trends](visuals/pm25_trend.png)
+
+### Seasonal Pollution Patterns
+Average PM2.5 concentrations across different seasons, highlighting winter peaks.
+
+![Seasonal Analysis](visuals/seasonal_pm25.png)
 
 ### Pollutant Correlations
-![Correlations](visuals/pollution_correlation.png)
+Heatmap showing relationships between major air pollutants.
 
-### City Comparison
-![City Boxplot](visuals/city_pm25_boxplot.png)
+![Pollutant Correlations](visuals/pollution_correlation.png)
+
+### City-wise Distribution
+Box plot comparing PM2.5 distributions across major cities.
+
+![City Comparison](visuals/city_pm25_boxplot.png)
 
 ### Yearly Trends
+Annual average PM2.5 levels for top cities over the decade.
+
 ![Yearly Trends](visuals/yearly_pm25_trends.png)
 
-## Data Source
-Kaggle: Air Quality Data in India (2015-2024)
+## 📁 Project Structure
 
-## License
-MIT
+```
+air-quality-india-2015-2024/
+│
+├── data/
+│   ├── raw/                 # Original dataset files
+│   └── processed/           # Cleaned and processed data
+│
+├── scripts/                 # Python analysis scripts
+│   ├── clean_data.py        # Data preprocessing
+│   ├── air_quality_analysis.py  # Main analysis and visualization
+│   ├── city_ranking.py      # City ranking analysis
+│   ├── seasonal_analysis.py # Seasonal pattern analysis
+│   └── interactive_visualizations.py  # Interactive plots
+│
+├── visuals/                 # Generated charts and plots
+├── output/                  # Analysis results and summaries
+│
+├── config.py                # Configuration settings
+├── requirements.txt         # Python dependencies
+├── README.md               # Project documentation
+└── LICENSE                 # MIT License
+```
+
+## 🛠️ Technologies Used
+
+- **Python**: Core programming language
+- **Pandas**: Data manipulation and analysis
+- **NumPy**: Numerical computations
+- **Matplotlib**: Static plotting
+- **Seaborn**: Statistical visualizations
+- **Plotly**: Interactive web-based charts
+
+## 📊 Data Source
+
+The dataset used in this analysis is sourced from Kaggle:
+- **Title**: Air Quality Data in India (2015-2024)
+- **Source**: [Kaggle Dataset](https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india)
+- **Coverage**: Daily air quality measurements from monitoring stations across Indian cities
+
+### Data Variables
+- **PM2.5, PM10**: Particulate matter concentrations
+- **NO, NO2, NOx**: Nitrogen oxides
+- **SO2**: Sulfur dioxide
+- **CO**: Carbon monoxide
+- **O3**: Ozone
+- **AQI**: Air Quality Index
+- **Other**: Benzene, Toluene, Xylene (VOC pollutants)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+For questions or suggestions, please open an issue on GitHub.
 ```
 
 air-quality-data-2015-2024/

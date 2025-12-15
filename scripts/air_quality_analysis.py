@@ -1,33 +1,30 @@
-# scripts/analyze_data_enhanced.py
-"""
-Simple Data Analysis for Air Quality Dataset
-
-This script creates basic visualizations and analysis.
-"""
+# Air Quality Analysis Script
+# This script generates various charts and analysis for the air quality dataset
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Set style
+# Set up plotting style
 plt.style.use('default')
 sns.set_palette("husl")
 
-# Paths
+# File paths
 PROCESSED_DIR = "../data/processed/"
 VISUALS_DIR = "../visuals/"
 
 def create_pm25_trend():
-    """Create PM2.5 trend plot with monthly resampling."""
+    # Create a line chart showing PM2.5 trends over time for major cities
     df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
     df['Datetime'] = pd.to_datetime(df['Datetime'])
 
-    # Resample to monthly averages for clarity
+    # Group by city and resample to monthly averages to reduce noise
     df.set_index('Datetime', inplace=True)
     monthly_trend = df.groupby('City')['PM2.5'].resample('M').mean().reset_index()
 
     plt.figure(figsize=(14, 8))
-    top_cities = monthly_trend.groupby('City')['PM2.5'].mean().nlargest(6).index  # Top 6 cities
+    # Get top 6 cities by average PM2.5
+    top_cities = monthly_trend.groupby('City')['PM2.5'].mean().nlargest(6).index
 
     colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown']
     for i, city in enumerate(top_cities):
@@ -46,7 +43,7 @@ def create_pm25_trend():
     plt.close()
 
 def create_pollution_heatmap():
-    """Create correlation heatmap."""
+    # Generate a heatmap showing correlations between different pollutants
     df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
 
     pollutants = ['PM2.5', 'PM10', 'NO2', 'SO2', 'CO', 'O3']
@@ -60,12 +57,12 @@ def create_pollution_heatmap():
     plt.close()
 
 def create_seasonal_analysis():
-    """Create seasonal PM2.5 analysis."""
+    # Analyze PM2.5 levels by season
     df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
     df['Datetime'] = pd.to_datetime(df['Datetime'])
     df['Month'] = df['Datetime'].dt.month
 
-    # Map months to seasons
+    # Define seasons based on months
     season_map = {12: 'Winter', 1: 'Winter', 2: 'Winter',
                   3: 'Spring', 4: 'Spring', 5: 'Spring',
                   6: 'Summer', 7: 'Summer', 8: 'Summer',
@@ -81,7 +78,7 @@ def create_seasonal_analysis():
     plt.ylabel('PM2.5 (µg/m³)', fontsize=12)
     plt.grid(axis='y', alpha=0.3)
 
-    # Add value labels on bars
+    # Add value labels on top of bars
     for bar in bars:
         height = bar.get_height()
         plt.text(bar.get_x() + bar.get_width()/2., height + 1,
@@ -92,7 +89,7 @@ def create_seasonal_analysis():
     plt.close()
 
 def create_city_comparison():
-    """Create city comparison boxplot for PM2.5."""
+    # Compare PM2.5 distributions across cities using box plots
     df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
 
     top_cities = df.groupby('City')['PM2.5'].mean().nlargest(8).index
@@ -109,7 +106,7 @@ def create_city_comparison():
     plt.close()
 
 def create_yearly_trends():
-    """Create yearly average trends."""
+    # Show yearly average PM2.5 trends for major cities
     df = pd.read_csv(PROCESSED_DIR + "city_day_cleaned.csv")
     df['Datetime'] = pd.to_datetime(df['Datetime'])
     df['Year'] = df['Datetime'].dt.year
@@ -134,7 +131,7 @@ def create_yearly_trends():
     plt.close()
 
 def main():
-    """Run all analyses."""
+    # Run all analysis functions
     print("Creating visualizations...")
     create_pm25_trend()
     create_pollution_heatmap()
