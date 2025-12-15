@@ -3,16 +3,26 @@ import plotly.express as px
 import plotly.graph_objects as go
 import os
 import logging
+from pathlib import Path
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-CLEAN_PATH = "../data/processed/"
-VIS_PATH = "../visuals/"
+BASE_DIR = Path(__file__).resolve().parents[1]
+CLEAN_PATH = BASE_DIR / 'data' / 'processed'
+VIS_PATH = BASE_DIR / 'visuals'
+
+# Ensure output directory exists
+VIS_PATH.mkdir(parents=True, exist_ok=True)
 
 def create_interactive_pm25_trend(filename):
     """Create interactive PM2.5 trend plot."""
-    df = pd.read_csv(CLEAN_PATH + filename)
+    file_path = CLEAN_PATH / filename
+    if not file_path.exists():
+        logging.warning(f"File not found: {file_path}. Skipping.")
+        return
+
+    df = pd.read_csv(file_path)
 
     if "Datetime" not in df.columns or "PM2.5" not in df.columns:
         logging.warning(f"Required columns not found in {filename}. Skipping.")
@@ -21,26 +31,36 @@ def create_interactive_pm25_trend(filename):
     df['Datetime'] = pd.to_datetime(df['Datetime'])
     df = df.dropna(subset=['PM2.5'])
 
-    # Resample to weekly averages for better visibility
+    # Reduce size by focusing on top cities and using monthly resampling
     df = df.set_index('Datetime')
     if "City" in df.columns:
-        daily_pm25 = df.groupby('City')['PM2.5'].resample('W').mean().reset_index()
-        fig = px.line(daily_pm25, x='Datetime', y='PM2.5', color='City',
-                      title=f'Interactive Weekly PM2.5 Trends by City ({filename})',
+        # pick top N cities by mean PM2.5 to keep the HTML small
+        top_n = 6
+        city_means = df.groupby('City')['PM2.5'].mean().sort_values(ascending=False)
+        top_cities = city_means.head(top_n).index.tolist()
+        df_top = df[df['City'].isin(top_cities)]
+        monthly_pm25 = df_top.groupby('City')['PM2.5'].resample('M').mean().reset_index()
+        fig = px.line(monthly_pm25, x='Datetime', y='PM2.5', color='City',
+                      title=f'Interactive Monthly PM2.5 Trends (Top {top_n} Cities) ({filename})',
                       color_discrete_sequence=px.colors.qualitative.Set1)
     else:
-        daily_pm25 = df['PM2.5'].resample('W').mean().reset_index()
-        fig = px.line(daily_pm25, x='Datetime', y='PM2.5',
-                      title=f'Interactive Weekly PM2.5 Trend ({filename})')
+        monthly_pm25 = df['PM2.5'].resample('M').mean().reset_index()
+        fig = px.line(monthly_pm25, x='Datetime', y='PM2.5',
+                      title=f'Interactive Monthly PM2.5 Trend ({filename})')
 
     fig.update_layout(xaxis_title='Date', yaxis_title='PM2.5')
-    out_path = VIS_PATH + filename.replace(".csv", "_pm25_trend_interactive.html")
-    fig.write_html(out_path)
+    out_path = VIS_PATH / filename.replace(".csv", "_pm25_trend_interactive.html")
+    # Use the CDN-hosted plotly.js to keep files smaller and avoid huge embedded bundles.
+    fig.write_html(str(out_path), include_plotlyjs='cdn', full_html=True)
     logging.info(f"Saved interactive PM2.5 trend: {out_path}")
 
 def create_interactive_top_cities():
     """Create interactive bar chart of top polluted cities."""
-    df = pd.read_csv(CLEAN_PATH + "city_day_cleaned.csv")
+    file_path = CLEAN_PATH / "city_day_cleaned.csv"
+    if not file_path.exists():
+        logging.warning(f"File not found: {file_path}. Skipping top cities chart.")
+        return
+    df = pd.read_csv(file_path)
 
     if "City" not in df.columns or "AQI" not in df.columns:
         logging.warning("Required columns not found. Skipping top cities chart.")
@@ -53,13 +73,17 @@ def create_interactive_top_cities():
                  color='AQI', color_continuous_scale='Plasma')
     fig.update_layout(xaxis_title='City', yaxis_title='Average AQI')
 
-    out_path = VIS_PATH + "top_polluted_cities_interactive.html"
-    fig.write_html(out_path)
+    out_path = VIS_PATH / "top_polluted_cities_interactive.html"
+    fig.write_html(str(out_path), include_plotlyjs='cdn', full_html=True)
     logging.info(f"Saved interactive top cities chart: {out_path}")
 
 def create_interactive_seasonal_trends():
     """Create interactive seasonal trends."""
-    df = pd.read_csv(CLEAN_PATH + "city_day_cleaned.csv")
+    file_path = CLEAN_PATH / "city_day_cleaned.csv"
+    if not file_path.exists():
+        logging.warning(f"File not found: {file_path}. Skipping seasonal trends.")
+        return
+    df = pd.read_csv(file_path)
 
     if "Datetime" not in df.columns or "PM2.5" not in df.columns:
         logging.warning("Required columns not found. Skipping seasonal trends.")
@@ -76,13 +100,17 @@ def create_interactive_seasonal_trends():
                   title='Seasonal PM2.5 Trends Over Years')
     fig.update_layout(xaxis_title='Date', yaxis_title='PM2.5')
 
-    out_path = VIS_PATH + "seasonal_pm25_trends_interactive.html"
-    fig.write_html(out_path)
+    out_path = VIS_PATH / "seasonal_pm25_trends_interactive.html"
+    fig.write_html(str(out_path), include_plotlyjs='cdn', full_html=True)
     logging.info(f"Saved interactive seasonal trends: {out_path}")
 
 def create_interactive_correlation_heatmap(filename):
     """Create interactive correlation heatmap."""
-    df = pd.read_csv(CLEAN_PATH + filename)
+    file_path = CLEAN_PATH / filename
+    if not file_path.exists():
+        logging.warning(f"File not found: {file_path}. Skipping correlation heatmap.")
+        return
+    df = pd.read_csv(file_path)
 
     pollutants = ['PM2.5', 'PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3', 'Benzene', 'Toluene', 'Xylene']
     available_pollutants = [p for p in pollutants if p in df.columns]
@@ -102,8 +130,8 @@ def create_interactive_correlation_heatmap(filename):
 
     fig.update_layout(title=f'Interactive Pollutant Correlation Matrix ({filename})')
 
-    out_path = VIS_PATH + filename.replace(".csv", "_correlation_interactive.html")
-    fig.write_html(out_path)
+    out_path = VIS_PATH / filename.replace(".csv", "_correlation_interactive.html")
+    fig.write_html(str(out_path), include_plotlyjs='cdn', full_html=True)
     logging.info(f"Saved interactive correlation heatmap: {out_path}")
 
 def main():
