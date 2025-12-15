@@ -74,11 +74,11 @@ def correlation_analysis(df, filename):
     corr_matrix = df[available_pollutants].corr()
 
     plt.figure(figsize=(12, 10))
-    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0)
-    plt.title(f"Pollutant Correlation Matrix ({filename})")
+    sns.heatmap(corr_matrix, annot=True, cmap='plasma', center=0, square=True, linewidths=0.5)
+    plt.title(f"Pollutant Correlation Matrix ({filename})", fontsize=16, fontweight='bold')
     plt.tight_layout()
     out_path = VIS_PATH + filename.replace(".csv", "_correlation.png")
-    plt.savefig(out_path)
+    plt.savefig(out_path, dpi=200)
     plt.close()
     logging.info(f"Saved correlation heatmap: {out_path}")
 
@@ -108,14 +108,15 @@ def analyze_file(filename):
         daily_pm25 = df.groupby(date_col)["PM2.5"].mean()
 
         plt.figure(figsize=(10, 5))
-        daily_pm25.plot()
-        plt.title(f"Average PM2.5 Over Time ({filename})")
-        plt.xlabel("Date")
-        plt.ylabel("PM2.5")
+        daily_pm25.plot(color='darkblue', linewidth=2, marker='s', markersize=4, markerfacecolor='red')
+        plt.title(f"Average PM2.5 Over Time ({filename})", fontsize=16, fontweight='bold')
+        plt.xlabel("Date", fontsize=14)
+        plt.ylabel("PM2.5", fontsize=14)
+        plt.grid(True, linestyle='--', alpha=0.7)
         plt.tight_layout()
 
         out_path = VIS_PATH + filename.replace(".csv", "_pm25_trend.png")
-        plt.savefig(out_path)
+        plt.savefig(out_path, dpi=200)
         plt.close()
 
         logging.info(f"Saved: {out_path}")

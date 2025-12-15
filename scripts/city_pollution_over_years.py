@@ -43,11 +43,12 @@ def main():
 
     plot_df = city_year[city_year["City"].isin(top_cities)]
     plt.figure(figsize=(12,6))
-    sns.lineplot(data=plot_df, x="year", y=metric, hue="City", marker="o")
-    plt.title(f"{metric} trend over years — Top {len(top_cities)} cities")
-    plt.xlabel("Year")
-    plt.ylabel(metric)
+    sns.lineplot(data=plot_df, x="year", y=metric, hue="City", marker="o", palette="tab10")
+    plt.title(f"{metric} trend over years — Top {len(top_cities)} cities", fontsize=16, fontweight='bold')
+    plt.xlabel("Year", fontsize=14)
+    plt.ylabel(metric, fontsize=14)
     plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
     out = VISUALS + "city_pollution_over_years_top6.png"
     plt.savefig(out, dpi=200)

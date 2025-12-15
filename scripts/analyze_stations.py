@@ -36,10 +36,13 @@ def analyze_stations():
 
     # Plot
     plt.figure(figsize=(12, 6))
-    station_counts.plot(kind="bar")
-    plt.title("Number of Monitoring Stations per City")
-    plt.xlabel("City")
-    plt.ylabel("Total Stations")
+    colors = plt.cm.plasma(np.linspace(0, 1, len(station_counts)))  # Colorful palette
+    station_counts.plot(kind="bar", color=colors, edgecolor="black", linewidth=1.5)
+    plt.title("Number of Monitoring Stations per City", fontsize=16, fontweight='bold')
+    plt.xlabel("City", fontsize=14)
+    plt.ylabel("Total Stations", fontsize=14)
+    plt.xticks(rotation=45, ha='right')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
 
     img_path = VISUALS_PATH + "stations_per_city.png"

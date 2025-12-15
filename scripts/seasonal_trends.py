@@ -65,11 +65,12 @@ def main():
     # Plot each pollutant seasonal bar chart
     for col in pollutant_cols:
         plt.figure(figsize=(7,5))
-        sns.barplot(x=season_mean.index, y=season_mean[col].values)
-        plt.title(f"Seasonal average — {col}")
-        plt.ylabel(col)
-        plt.xlabel("")
+        sns.barplot(x=season_mean.index, y=season_mean[col].values, palette="viridis")
+        plt.title(f"Seasonal average — {col}", fontsize=16, fontweight='bold')
+        plt.ylabel(col, fontsize=14)
+        plt.xlabel("", fontsize=14)
         plt.xticks(rotation=15)
+        plt.grid(axis='y', linestyle='--', alpha=0.7)
         fn = VISUALS + f"seasonal_{col.replace('.','').lower()}.png"
         plt.tight_layout()
         plt.savefig(fn, dpi=200)

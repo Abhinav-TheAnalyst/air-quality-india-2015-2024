@@ -58,11 +58,11 @@ def analyze_file(filename):
         daily_pm25 = df.groupby(date_col)["PM2.5"].mean()
 
         plt.figure(figsize=(10, 5))
-        daily_pm25.plot()
-
-        plt.title(f"Average PM2.5 Over Time ({filename})")
-        plt.xlabel("Date")
-        plt.ylabel("PM2.5")
+        daily_pm25.plot(color='crimson', linewidth=2, marker='o', markersize=3, markerfacecolor='orange')
+        plt.title(f"Average PM2.5 Over Time ({filename})", fontsize=16, fontweight='bold')
+        plt.xlabel("Date", fontsize=14)
+        plt.ylabel("PM2.5", fontsize=14)
+        plt.grid(True, linestyle='--', alpha=0.7)
         plt.tight_layout()
 
         out_path = VIS_PATH + filename.replace(".csv", "_pm25_trend.png")

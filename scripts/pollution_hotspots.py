@@ -49,10 +49,13 @@ def main():
     pca = PCA(n_components=2)
     coords = pca.fit_transform(X)
     plt.figure(figsize=(10,7))
-    sns.scatterplot(x=coords[:,0], y=coords[:,1], hue=labels, palette="tab10", s=100)
+    sns.scatterplot(x=coords[:,0], y=coords[:,1], hue=labels, palette="viridis", s=120, edgecolor="black", linewidth=0.5)
     for i, city in enumerate(city_avg.index):
-        plt.text(coords[i,0]+0.02, coords[i,1]+0.02, city, fontsize=8)
-    plt.title("City Pollution Clusters (based on average pollutant levels)")
+        plt.text(coords[i,0]+0.02, coords[i,1]+0.02, city, fontsize=9, fontweight='bold')
+    plt.title("City Pollution Clusters (based on average pollutant levels)", fontsize=16, fontweight='bold')
+    plt.xlabel("PCA Component 1", fontsize=14)
+    plt.ylabel("PCA Component 2", fontsize=14)
+    plt.grid(True, linestyle='--', alpha=0.7)
     out = VISUALS + "pollution_hotspots_clusters.png"
     plt.tight_layout()
     plt.savefig(out, dpi=200)

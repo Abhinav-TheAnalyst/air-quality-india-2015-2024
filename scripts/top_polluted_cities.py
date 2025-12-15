@@ -41,10 +41,13 @@ def top_polluted_cities_report():
 
     # Plot and save chart
     plt.figure(figsize=(12, 6))
-    top10.plot(kind="bar", edgecolor="black")
-    plt.title("Top 10 Most Polluted Cities in India (Avg AQI 2015–2024)")
-    plt.xlabel("City")
-    plt.ylabel("Average AQI")
+    colors = plt.cm.viridis(np.linspace(0, 1, len(top10)))  # Vibrant color palette
+    top10.plot(kind="bar", color=colors, edgecolor="black", linewidth=1.5)
+    plt.title("Top 10 Most Polluted Cities in India (Avg AQI 2015–2024)", fontsize=16, fontweight='bold')
+    plt.xlabel("City", fontsize=14)
+    plt.ylabel("Average AQI", fontsize=14)
+    plt.xticks(rotation=45, ha='right')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
 
     img_path = VISUALS_PATH + "top_polluted_cities.png"
