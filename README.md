@@ -199,6 +199,7 @@ air-quality-india-2015-2024/
 - Python, Pandas, NumPy
 - Matplotlib, Seaborn for static plots
 - Plotly for interactive charts (optional)
+- Power bi for dashboards
 
 ## Data Variables
 
