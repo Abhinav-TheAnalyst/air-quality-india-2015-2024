@@ -1,3 +1,4 @@
+#Master script to run all analysis and visualization scripts in sequence.
 import os
 import subprocess
 
