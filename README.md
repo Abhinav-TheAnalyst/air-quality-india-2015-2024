@@ -21,12 +21,18 @@ This repository contains an analysis of air quality data collected from various 
 - 📍 Comparative analysis between cities
 - 📅 Monthly/Quarterly trends
 
+![Average AQI Trends](dashboards/dashboard-Aqi.png)
+
+![Major Air Pollutants](dashboards/dashboard-pollutants.png)
+
 ### 2. **Station Performance Dashboard** 
 (`Dash2-StationAnalysis.pbix`)
 - 🔍 Individual station tracking across 10 stations
 - 📈 AQI trends and pollutant breakdown
 - 📊 Year-on-year comparisons
 - ⏰ Seasonal patterns analysis
+
+![Station Wise Analysis](dashboards/dashboard-stations.png)
 
 ## 🏢 Cities Covered
 - Delhi (2 stations)
