@@ -13,6 +13,35 @@ A concise, human-written analysis of air pollution across Indian cities (2015–
 
 This repository contains an analysis of air quality data collected from various monitoring stations across Indian cities. The dataset covers 10 years of daily air quality measurements, providing insights into pollution patterns, seasonal variations, and city-wise comparisons.
 
+## 📊 Dashboards
+
+### 1. **Overall Air Quality Pollutants Dashboard**  
+(`Dash1-Pollutants.pbix`)
+- 🌍 City-wide air quality overview
+- 📍 Comparative analysis between cities
+- 📅 Monthly/Quarterly trends
+
+### 2. **Station Performance Dashboard** 
+(`Dash2-StationAnalysis.pbix`)
+- 🔍 Individual station tracking across 10 stations
+- 📈 AQI trends and pollutant breakdown
+- 📊 Year-on-year comparisons
+- ⏰ Seasonal patterns analysis
+
+## 🏢 Cities Covered
+- Delhi (2 stations)
+- Mumbai (2 stations)
+- Bangalore (2 stations)
+- Chennai (2 stations)
+- Kolkata (2 stations)
+
+## 📈 Data Points
+
+**Pollutants Tracked:**
+- PM2.5, PM10, NO, NO2, NOx, NH3, CO, SO2, O3, Benzene, Toluene, Xylene
+
+**Time Period:** 2015-2024 (18,265+ records)
+
 ## ✨ Key Features
 
 - **Data Cleaning Pipeline**: Automated preprocessing of raw data with missing value imputation
