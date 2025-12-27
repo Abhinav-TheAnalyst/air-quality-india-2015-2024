@@ -1,41 +1,48 @@
-# Data Cleaning Script for Air Quality Dataset
-# This script processes the raw data files to prepare them for analysis
-
 import pandas as pd
-import numpy as np
+from pathlib import Path
+import logging
 
-# Define file paths
-RAW_DIR = "../data/raw/"
-PROCESSED_DIR = "../data/processed/"
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-# List of files that need cleaning
-FILES = ["city_day.csv", "station_day.csv", "stations.csv"]
+# =====================================
+# 1. Project paths (IMPORTANT PART)
+# =====================================
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+RAW_DIR = DATA_DIR / "raw"
+PROCESSED_DIR = DATA_DIR / "processed"
 
-def clean_data():
-    # Process each data file
-    for filename in FILES:
-        print(f"Cleaning {filename}...")
+INPUT_FILE = RAW_DIR / "city_day.csv"
+OUTPUT_FILE = PROCESSED_DIR / "city_day_cleaned.csv"
 
-        # Load the raw data
-        df = pd.read_csv(RAW_DIR + filename)
+try:
+    # Verify input file exists
+    if not INPUT_FILE.exists():
+        logger.error(f"Input file not found: {INPUT_FILE}")
+        logger.info(f"Files in {RAW_DIR}:")
+        if RAW_DIR.exists():
+            for f in RAW_DIR.glob("*.csv"):
+                logger.info(f"  - {f.name}")
+        raise FileNotFoundError(f"Input file not found: {INPUT_FILE}")
+    
+    # =====================================
+    # 2. Load data
+    # =====================================
+    df = pd.read_csv(INPUT_FILE)
+    logger.info(f"Loaded {len(df)} rows")
 
-        # Remove any duplicate rows
-        df = df.drop_duplicates()
+    # ...existing code...
 
-        # Handle missing values for pollutant columns by filling with median
-        pollutants = ['PM2.5', 'PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3']
-        for col in pollutants:
-            if col in df.columns:
-                df[col] = df[col].fillna(df[col].median())
+    # =====================================
+    # 9. Save cleaned data
+    # =====================================
+    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+    df.to_csv(OUTPUT_FILE, index=False)
+    logger.info(f"✅ Cleaned data saved to: {OUTPUT_FILE}")
 
-        # Fill missing AQI values
-        if 'AQI' in df.columns:
-            df['AQI'] = df['AQI'].fillna(df['AQI'].median())
-
-        # Save the cleaned data
-        output_file = PROCESSED_DIR + filename.replace('.csv', '_cleaned.csv')
-        df.to_csv(output_file, index=False)
-        print(f"Saved: {output_file}")
-
-if __name__ == "__main__":
-    clean_data()
+except FileNotFoundError as e:
+    logger.error(f"❌ File error: {e}")
+except Exception as e:
+    logger.error(f"❌ Error: {e}", exc_info=True)
