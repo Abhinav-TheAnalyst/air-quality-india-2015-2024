@@ -7,8 +7,6 @@
 [![Seaborn](https://img.shields.io/badge/Seaborn-0.13.2-blue.svg)](https://seaborn.pydata.org/)
 [![Plotly](https://img.shields.io/badge/Plotly-6.5.0-green.svg)](https://plotly.com/)
 
-A concise, human-written analysis of air pollution across Indian cities (2015–2024). This repo contains scripts to clean, analyze and visualize the dataset — designed to be clear for reviewers and recruiters.
-
 ## 📊 Project Overview
 
 This repository contains an analysis of air quality data collected from various monitoring stations across Indian cities. The dataset covers 10 years of daily air quality measurements, providing insights into pollution patterns, seasonal variations, and city-wise comparisons.
@@ -397,5 +395,4 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 - Practiced time-series aggregation and visualization to reveal trends (daily/hourly aggregation and yearly summaries). 
 - Performed seasonal analysis and basic statistical testing (ANOVA + Tukey HSD) to evaluate seasonal pollutant differences.
 - Built reproducible analysis scripts and a small demo runner (`scripts/run_example.py`) so reviewers can quickly run a demo.
-- Learned how to prepare outputs for sharing: CSV summaries in `output/` and visuals in `visuals/`; replaced a bulky PDF report with a lightweight `output/summary_report.md` and a small generator script to recreate it.
-
+- Learned how to prepare outputs for sharing: CSV summaries in `output/` and visuals in `visuals/`;
